@@ -1,0 +1,108 @@
+{
+  "version": "0.1.0",
+  "default": "deny",
+  "match_precedence": "most-specific-path-wins",
+  "zones": [
+    {
+      "path": "raw/**",
+      "capabilities": ["read", "create"],
+      "note": "Existing source snapshots are immutable. Create a new version instead of overwriting."
+    },
+    {
+      "path": "index.md",
+      "capabilities": ["read", "propose-write"],
+      "note": "Update in the same reviewed change set as formal pages."
+    },
+    {
+      "path": "log.md",
+      "capabilities": ["read", "append"],
+      "note": "Append only after an action and its verification actually occurred."
+    },
+    {
+      "path": "10-收件箱/**",
+      "capabilities": ["read", "create", "update"],
+      "note": "Draft and candidate area; publication still requires review."
+    },
+    {
+      "path": "20-Agent-Harness/06-运行记录/**",
+      "capabilities": ["read", "append", "create"],
+      "note": "Run history is append-oriented."
+    },
+    {
+      "path": "60-Hermes运维/02-Skills/已启用/**",
+      "capabilities": ["read", "propose-governance-change"],
+      "note": "Enabling or changing a loaded skill requires explicit approval and runtime verification."
+    },
+    {
+      "path": "60-Hermes运维/config/**",
+      "capabilities": ["read", "propose-governance-change"],
+      "note": "Configuration examples require explicit approval and a real config check before use."
+    },
+    {
+      "path": "60-Hermes运维/**",
+      "capabilities": ["read", "append", "create-candidate"],
+      "note": "Operational records and skill candidates; no secrets."
+    },
+    {
+      "path": "concepts/**",
+      "capabilities": ["read", "propose-write"],
+      "note": "Write through the review queue unless the current task names exact files."
+    },
+    {
+      "path": "entities/**",
+      "capabilities": ["read", "propose-write"],
+      "note": "Write through the review queue unless the current task names exact files."
+    },
+    {
+      "path": "comparisons/**",
+      "capabilities": ["read", "propose-write"],
+      "note": "Write through the review queue unless the current task names exact files."
+    },
+    {
+      "path": "queries/**",
+      "capabilities": ["read", "propose-write"],
+      "note": "Write through the review queue unless the current task names exact files."
+    },
+    {
+      "path": "30-系统工具库/**",
+      "capabilities": ["read", "propose-write"],
+      "note": "Write through the review queue unless the current task names exact files."
+    },
+    {
+      "path": "50-创意库/**",
+      "capabilities": ["read", "propose-write"],
+      "note": "Write through the review queue unless the current task names exact files."
+    },
+    {
+      "path": "AGENTS.md",
+      "capabilities": ["read", "propose-governance-change"],
+      "note": "Governance area; explicit approval and diff required."
+    },
+    {
+      "path": "SCHEMA.md",
+      "capabilities": ["read", "propose-governance-change"],
+      "note": "Governance area; explicit approval and diff required."
+    },
+    {
+      "path": "policies/**",
+      "capabilities": ["read", "propose-governance-change"],
+      "note": "Governance area; explicit approval and diff required."
+    },
+    {
+      "path": "scripts/**",
+      "capabilities": ["read", "propose-governance-change"],
+      "note": "Governance area; explicit approval and diff required."
+    }
+  ],
+  "human_approval_required": [
+    "delete",
+    "move",
+    "rename",
+    "touch-10-or-more-existing-files",
+    "publish-candidate",
+    "modify-governance",
+    "external-side-effect",
+    "install-or-update-third-party-code",
+    "handle-credentials"
+  ]
+}

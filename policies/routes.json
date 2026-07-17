@@ -1,0 +1,20 @@
+{
+  "version": "0.1.0",
+  "routes": {
+    "direct": {
+      "conditions": ["low-risk", "read-only", "no-required-external-evidence"],
+      "roles": ["router", "worker"],
+      "required_artifacts": ["result", "trace"]
+    },
+    "research": {
+      "conditions": ["requires-evidence", "multi-source", "conflict-resolution", "multi-step-read"],
+      "roles": ["router", "worker", "reviewer"],
+      "required_artifacts": ["result", "trace", "evidence-ledger"]
+    },
+    "governed-write": {
+      "conditions": ["write", "execute", "move", "rename", "publish", "external-side-effect"],
+      "roles": ["router", "worker", "writer", "reviewer"],
+      "required_artifacts": ["change-proposal", "diff", "approval", "verification", "rollback-plan"]
+    }
+  }
+}

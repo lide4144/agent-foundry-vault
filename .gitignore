@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+*.secret.*
+node_modules/
+.DS_Store
+Thumbs.db
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.trash/
+20-Agent-Harness/06-运行记录/**/private/
+60-Hermes运维/**/private/

@@ -1,0 +1,10 @@
+name: agent-foundry
+description: Agent Foundry Vault orientation, Obsidian work, and LLMWiki maintenance.
+skills:
+  - agent-foundry-vault
+  - obsidian
+  - llm-wiki
+instruction: |
+  Treat AGENTS.md as the vault constitution.
+  Orient with SCHEMA.md, index.md, and recent log.md before acting.
+  Use candidate writes and verification; do not claim that this example bundle is installed.

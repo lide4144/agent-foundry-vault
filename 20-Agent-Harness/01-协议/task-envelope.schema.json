@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-foundry-vault.local/schemas/task-envelope.schema.json",
+  "title": "Agent Foundry Vault Task Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "task_id",
+    "trace_id",
+    "title",
+    "objective",
+    "mode",
+    "risk_level",
+    "input",
+    "requested_actions",
+    "acceptance_criteria",
+    "output_contract"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,79}$"
+    },
+    "trace_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,99}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "mode": {
+      "enum": ["auto", "direct", "research", "governed-write"]
+    },
+    "risk_level": {
+      "enum": ["low", "medium", "high"]
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "requested_actions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["read", "search", "write", "execute"]
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500
+      },
+      "default": []
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500
+      }
+    },
+    "evidence_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min_sources", "allow_unverified"],
+      "properties": {
+        "min_sources": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "allow_unverified": {
+          "type": "boolean"
+        },
+        "require_primary": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "write_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_paths", "approval_state"],
+      "properties": {
+        "target_paths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "approval_state": {
+          "enum": ["pending", "approved", "rejected"]
+        },
+        "approval_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "output_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "language"],
+      "properties": {
+        "format": {
+          "enum": ["text", "markdown", "json", "change-proposal"]
+        },
+        "language": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 20
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "requested_actions": {
+            "contains": {
+              "enum": ["write", "execute"]
+            }
+          }
+        },
+        "required": ["requested_actions"]
+      },
+      "then": {
+        "required": ["write_gate"],
+        "properties": {
+          "mode": {
+            "enum": ["auto", "governed-write"]
+          },
+          "output_contract": {
+            "type": "object",
+            "properties": {
+              "format": {
+                "const": "change-proposal"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

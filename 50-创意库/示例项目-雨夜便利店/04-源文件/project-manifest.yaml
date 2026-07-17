@@ -1,0 +1,41 @@
+schema_version: 1
+project:
+  id: rainy-night-convenience
+  title: 雨夜便利店
+  status: draft
+  content_rating: general
+
+source_policy:
+  source_of_truth: 04-源文件
+  derived_outputs:
+    - 06-发布/**/*.json
+    - 06-发布/**/*.png
+    - 06-发布/**/*.zip
+  reverse_edit_derived_outputs: false
+
+targets:
+  sillytavern:
+    target_version: 未锁定
+    export_profile: 未选择
+  extensions:
+    tavern_helper:
+      required: false
+      target_version: 未启用
+    st_prompt_template:
+      required: false
+      target_version: 未启用
+    mvu:
+      required: false
+      target_version: 未启用
+
+release_gate:
+  allow_release: false
+  static_validation: not_run
+  real_sillytavern_import_regression:
+    required: true
+    status: not_run
+    environment: 未记录
+
+notes:
+  - 本文件是教学示例；锁定真实目标版本并完成导入回归前禁止发布。
+  - 不在全仓写死角色卡 V2 或任何单一导出格式。

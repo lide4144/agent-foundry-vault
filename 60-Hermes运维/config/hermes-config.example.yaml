@@ -1,0 +1,24 @@
+# 示例片段，不是完整 config.yaml。
+# 先在 Vault 外设置 AGENT_FOUNDRY_VAULT_HOME、WIKI_PATH、OBSIDIAN_VAULT_PATH 为同一个总仓绝对路径，再人工合并。
+# 不要在本文件放 API Key、Cookie、令牌或其他秘密。
+
+skills:
+  external_dirs:
+    - "${AGENT_FOUNDRY_VAULT_HOME}/60-Hermes运维/02-Skills/已启用"
+  write_approval: true
+
+memory:
+  write_approval: true
+
+approvals:
+  mode: manual
+  timeout: 60
+  cron_mode: deny
+  mcp_reload_confirm: true
+
+# 警告：
+# external_dirs 让 Hermes 发现外部 Skill，但不是隔离或只读安全边界。
+# 只要 Hermes 进程拥有写权限，Skill 管理动作就可能修改其中的文件。
+# approvals、skills.write_approval 与 memory.write_approval 都不是普通 Wiki 文件的全局写审批。
+# 需要只读时，请使用操作系统权限、只读挂载或更严格的独立运行配置。
+# 合并后运行 hermes config check；不同版本不认识的字段应删除，而不是猜测补键。

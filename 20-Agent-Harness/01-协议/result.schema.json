@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-foundry-vault.local/schemas/result.schema.json",
+  "title": "Agent Foundry Vault Run Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "task_id",
+    "trace_id",
+    "status",
+    "route",
+    "output",
+    "review",
+    "metrics",
+    "warnings"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "trace_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "status": {
+      "enum": ["completed", "needs-approval", "failed"]
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "roles", "reason", "requires_approval"],
+      "properties": {
+        "mode": {
+          "enum": ["direct", "research", "governed-write"]
+        },
+        "roles": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "enum": ["router", "worker", "writer", "reviewer"]
+          }
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requires_approval": {
+          "type": "boolean"
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "content"],
+      "properties": {
+        "kind": {
+          "enum": ["text", "markdown", "json", "change-proposal"]
+        },
+        "content": {}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "notes"],
+      "properties": {
+        "status": {
+          "enum": ["not-required", "passed", "failed", "needs-human"]
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adapter_calls", "duration_ms"],
+      "properties": {
+        "adapter_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "duration_ms": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

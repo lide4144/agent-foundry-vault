@@ -1,0 +1,16 @@
+{
+  "name": "agent-foundry-vault",
+  "version": "0.1.0",
+  "description": "Obsidian × LLMWiki × Hermes 的 Agent 训练、知识与运维中枢",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "verify": "node scripts/verify-repo.mjs",
+    "smoke": "node scripts/harness-smoke.mjs",
+    "demo": "node scripts/show-first-seed.mjs",
+    "check": "npm run verify && npm run smoke"
+  }
+}
