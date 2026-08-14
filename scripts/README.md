@@ -47,3 +47,17 @@ node scripts/new-inbox-note.mjs "一个角色火花" --kind=闪念 --apply
 ```
 
 脚本只能写 `10-收件箱/待整理` 或 `10-收件箱/闪念`，遇到同名文件会停止，不会覆盖。
+
+## 校验、提交并同步 Vault
+
+```powershell
+npm run sync -- "vault update: 简短说明"
+```
+
+脚本先运行仓库校验，再暂存全部改动；有改动时才提交，随后执行 `git pull --rebase` 和 `git push`。校验、提交、拉取或推送任一步失败都会停止。
+
+同步脚本的本地集成检查：
+
+```powershell
+npm run test:sync
+```

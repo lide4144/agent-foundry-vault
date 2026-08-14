@@ -11,6 +11,8 @@
     "verify": "node scripts/verify-repo.mjs",
     "smoke": "node scripts/harness-smoke.mjs",
     "demo": "node scripts/show-first-seed.mjs",
-    "check": "npm run verify && npm run smoke"
+    "sync": "node scripts/sync-vault.mjs",
+    "test:sync": "node --test scripts/sync-vault.test.mjs",
+    "check": "npm run verify && npm run smoke && npm run test:sync"
   }
 }
