@@ -1,0 +1,27 @@
+project_id: shishi-world-lishuang
+project_version: 0.1.0-prototype
+status: draft
+allow_release: false
+card_type: text
+capabilities:
+  embedded_lorebook: true
+  mvu: false
+  tavern_helper: false
+  custom_ui: false
+  remote_runtime: false
+target:
+  sillytavern_version: unverified
+  format: chara_card_v3_json
+source_of_truth:
+  character: 04-源文件/角色/角色源-黎霜.md
+  worldbook: 04-源文件/世界书/世界书源-噬识世界-黎霜.md
+artifacts:
+  json: 06-发布/黎霜-角色卡-0.1.0-prototype.json
+  png: null
+runtime_dependencies: []
+acceptance:
+  - JSON 可解析且符合 V3 基本结构
+  - character_book 含 extensions 与 entries
+  - 开场建立圣池塑形场景且不替 user 决定行动
+  - 内嵌世界观不覆盖角色声音
+  - 真实 SillyTavern 导入与新聊天回归待执行
