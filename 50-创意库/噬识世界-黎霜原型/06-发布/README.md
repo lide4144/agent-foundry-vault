@@ -8,7 +8,7 @@ tags:
 knowledge_class: fictional
 ---
 
-# 发布区：黎霜角色卡 0.1.0 原型
+# 发布区：黎霜角色卡 0.1.1 原型
 
 当前仅生成可检查的 JSON 原型，不代表已经完成 SillyTavern 真实导入验收。
 

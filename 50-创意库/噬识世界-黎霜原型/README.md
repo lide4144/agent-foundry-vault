@@ -41,7 +41,7 @@ knowledge_class: fictional
 - [角色源文件](04-源文件/角色/角色源-黎霜.md)
 - [世界书源文件](04-源文件/世界书/世界书源-噬识世界-黎霜.md)
 - [项目清单](04-源文件/project-manifest.yaml)
-- [原型 JSON](06-发布/黎霜-角色卡-0.1.0-prototype.json)
+- [原型 JSON](06-发布/黎霜-角色卡-0.1.1-prototype.json)
 - [发布说明](06-发布/README.md)
 
 ## 依赖与验收边界
