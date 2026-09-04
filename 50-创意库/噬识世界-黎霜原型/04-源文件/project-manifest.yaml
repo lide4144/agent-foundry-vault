@@ -1,6 +1,6 @@
 project_id: shishi-world-lishuang
 project_version: 0.1.1-prototype
-status: draft
+status: active
 allow_release: false
 card_type: text
 capabilities:
@@ -14,6 +14,7 @@ target:
   format: chara_card_v3_json
 source_of_truth:
   character: 04-源文件/角色/角色源-黎霜.md
+  background_character: 04-源文件/角色/角色源-噬识魔尊.md
   worldbook: 04-源文件/世界书/世界书源-噬识世界-黎霜.md
 artifacts:
   json: 06-发布/黎霜-角色卡-0.1.1-prototype.json

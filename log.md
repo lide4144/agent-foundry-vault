@@ -182,3 +182,10 @@
 - 对候选文件执行回读验证。
 - `node scripts/verify-repo.mjs`：PASS（182 files、152 Markdown、12 JSON、3 JSONL、123 links）。
 - `node scripts/harness-smoke.mjs`：PASS（3/3）；仅证明协议和路由接通，不证明真实来源内容质量。
+
+## 2026-09-03 | governed-write | 噬识世界正式源文件整理
+
+- 经梦客明确授权，将已确认的共享世界观与人物设定整理进正式创意项目 `50-创意库/噬识世界-黎霜原型/`。
+- 项目、世界观源文件、世界书源文件、黎霜角色源文件和展示稿标记为 `active`；新增噬识魔尊正式背景人物源文件。
+- 更新项目 README、manifest 和 `index.md` 导航；候选稿保留为审计记录，未删除或覆盖。
+- 黎霜 JSON 仍保持 `0.1.1-prototype`，`allow_release: false`；真实 SillyTavern 导入、PNG 打包和运行时回归继续作为发布门禁。

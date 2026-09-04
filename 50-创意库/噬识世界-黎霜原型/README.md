@@ -1,8 +1,8 @@
 ---
 type: project
-status: draft
+status: active
 created: 2026-08-28
-updated: 2026-08-28
+updated: 2026-08-31
 tags:
   - creative
   - sillytavern
@@ -39,6 +39,7 @@ knowledge_class: fictional
 - [世界观摘要](02-世界观/世界观-噬识世界.md)
 - [角色展示稿](03-角色/角色-黎霜.md)
 - [角色源文件](04-源文件/角色/角色源-黎霜.md)
+- [背景人物源：噬识魔尊](04-源文件/角色/角色源-噬识魔尊.md)
 - [世界书源文件](04-源文件/世界书/世界书源-噬识世界-黎霜.md)
 - [项目清单](04-源文件/project-manifest.yaml)
 - [原型 JSON](06-发布/黎霜-角色卡-0.1.1-prototype.json)
